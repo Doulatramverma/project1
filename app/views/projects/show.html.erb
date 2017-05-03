@@ -1,18 +1,32 @@
 <p id="notice"><%= notice %></p>
+<p>
+    <strong>category:</strong>
+
+  <% if @project.category_id.present? %>
+   <%=Category.find(@project.category_id).name %>
+  <%end%>
+ </p>
+
 
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
 </p>
+<p>
+  <strong>Status:</strong>
+  <%= @project.status %>
 
-</p>
+ </p>
+<%= link_to "Add Member", new_project_member_path(@project), :class =>  "btn btn-primary"%>
+<p>
   <strong>document:</strong>
 <% if @project.document.present? %>
 <a href="<%=@project.document.url %>"><%=  @project.document.file.original_filename %></a>
   <% end %>
  </p>
+ 
 
-h2>Comments</h2>
+<h2>Comments</h2>
     <div class="comments-container">
     <%= render 'comments/comments' %>
     </div>

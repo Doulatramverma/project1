@@ -2,7 +2,7 @@
 
 
 <%= form_for([@project, @comment] , :method =>"patch" ) do |f| %>
-<%#= form_for(:comment, url: "/blogs/#{@blog.id}/comments/#{@comment.id}/edit") do |f| %>
+<%#= form_for(:comment, url: "/projects/#{@project.id}/comments/#{@comment.id}/edit") do |f| %>
 
   <p>
     <%= f.label :commenter %><br>

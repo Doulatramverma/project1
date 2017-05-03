@@ -11,18 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :document %>
     <%= f.file_field :document %>
   </div>
-
   <%= f.select(:category_id, Category.all.collect {|u| [u.name, u.id]},:prompt => 'Select Category') %>
-  <div class="actions">
+   <p>
+     <%= f.label :status %>
+    <%= f.select "status", options_for_select([ "Completed", "Pending", "Available"]),:prompt=>'Select One'%>
+
+   </p>
+ <div class="form-group">
+    <%= f.label :active %><br />
+    <%= f.label :active, "Yes", :value => "true"  %>
+    <%= f.radio_button :active, true,:checked => true %>
+    <%= f.label :active, "No", :value => "false" %>
+    <%= f.radio_button :active, false, :checked => true %>
+  </div>
+
+  <div class="form-group">
     <%= f.submit %>
   </div>
 <% end %>

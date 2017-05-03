@@ -1,33 +1,52 @@
 <p id="notice"><%= notice %></p>
+<% if params[:search].present? %>
+<h3> <%= @projects.count%> Results found.</h3>
+<% else %>
+<%end%>
 
 <h1>Projects</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Name</th><br>
+      <th>Status</th>
+      <th>Category</th>
+      <th>Member</th>
+    
       <th>Document</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
+
     <% @projects.each do |project| %>
-      <tr>
+     
         <td><%= project.name %></td>
+       <td><%= project.status %></td>
+        <td>
+        <% if project.category_id.present? %>
+        <%=Category.find(project.category_id).name %>
+        <%end%>
+        </td>
+        <td>
+        <%= project.members.collect(&:user).compact.flatten.collect(&:email) %>
+        </td>
         <% if project.document.present? %>
         <td>
-   <a href="<%=project.document.url %>"><%=  project.document.file.original_filename %></a>
- </p></td>
-      <%end%>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+
+        <a href="<%=project.document.url %>"><%=  project.document.file.original_filename %></a>
+        </td>
+       <%end%>
+        <td><%= link_to 'Show', project,:class=>"btn btn-default" %></td>
+        <td><%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-default" %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" %></td></tr>
+        
+    <%end%>
+
 </table>
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%#= link_to 'New Project', new_project_path %>
