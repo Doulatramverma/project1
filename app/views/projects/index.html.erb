@@ -39,8 +39,8 @@
         <a href="<%=project.document.url %>"><%=  project.document.file.original_filename %></a>
         </td>
        <%end%>
-        <td><%= link_to 'Show', project,:class=>"btn btn-default" %></td>
-        <td><%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-default" %></td>
+        <td><%= link_to 'Show', project,:class=>"btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-warning" %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" %></td></tr>
         
     <%end%>

@@ -1,4 +1,5 @@
-<%= form_for(category) do |f| %>
+
+<%= form_for category,:html=>{:class=>"form-horizontal"} do |f| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -10,18 +11,40 @@
       </ul>
     </div>
   <% end %>
+  
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <div class="form-group">
+        <label class="col-md-4 control-label">Name</label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <%= f.text_field :name, :placeholder=>"Name", :class=>"form-control" %>
+          </div>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Description</label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-text"></i></span>
+           <%= f.text_area :description, :placeholder=>"Description", :class=>"form-control" %>
+          </div>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+   
+  <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+          <%=f.submit :class=>"btn btn-success" %>
+        </div>
+      </div>
 <% end %>
+
+
+
+
+
+
+
+
+
